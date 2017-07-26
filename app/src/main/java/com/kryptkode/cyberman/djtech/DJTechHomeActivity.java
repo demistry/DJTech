@@ -2,6 +2,9 @@ package com.kryptkode.cyberman.djtech;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,8 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
+import com.kryptkode.cyberman.djtech.utils.ItemDivider;
+
+import javax.net.ssl.HandshakeCompletedListener;
+
 public class DJTechHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, HomeScreenFragment.HomeScreenFragmentListener {
+
+    HomeScreenFragment homeScreenFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +36,20 @@ public class DJTechHomeActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        homeScreenFragment = new HomeScreenFragment();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        displayFragment(homeScreenFragment);
+
+    }
+
+    private void displayFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_root, fragment);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -70,17 +91,36 @@ public class DJTechHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            displayFragment(homeScreenFragment);
 
         } else if (id == R.id.nav_about) {
 
-        }  else if (id == R.id.nav_contact_us) {
+            displaySnackBarMessage("NAV");
+        } else if (id == R.id.nav_contact_us) {
+            displaySnackBarMessage("CONTACT");
 
         } else if (id == R.id.nav_share) {
+            displaySnackBarMessage("SHARE");
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    @Override
+    public void onItemClicked(int position) {
+        displaySnackBarMessage("Position -" + position);
+    }
+
+    @Override
+    public void onAuthorAvatarClicked(int position) {
+        displaySnackBarMessage("AUTHOR -" + position);
+    }
+
+    private void displaySnackBarMessage(String message) {
+        Snackbar.make(findViewById(R.id.content_root), message, Snackbar.LENGTH_SHORT).show();
     }
 }

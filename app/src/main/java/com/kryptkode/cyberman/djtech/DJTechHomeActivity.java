@@ -16,10 +16,12 @@ import android.view.MenuItem;
 import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
 import com.kryptkode.cyberman.djtech.utils.ItemDivider;
 
+import javax.net.ssl.HandshakeCompletedListener;
+
 public class DJTechHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeScreenFragment.HomeScreenFragmentListener {
 
-    private HomeScreenFragment homeScreenFragment;
+    HomeScreenFragment homeScreenFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +36,20 @@ public class DJTechHomeActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        homeScreenFragment = new HomeScreenFragment();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        homeScreenFragment = new HomeScreenFragment();
+        displayFragment(homeScreenFragment);
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.content_root, homeScreenFragment);
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        transaction.commit();
+    }
+
+    private void displayFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_root, fragment);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -84,14 +91,16 @@ public class DJTechHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-
             displayFragment(homeScreenFragment);
 
         } else if (id == R.id.nav_about) {
 
-        }  else if (id == R.id.nav_contact_us) {
+            displaySnackBarMessage("NAV");
+        } else if (id == R.id.nav_contact_us) {
+            displaySnackBarMessage("CONTACT");
 
         } else if (id == R.id.nav_share) {
+            displaySnackBarMessage("SHARE");
 
         }
 
@@ -100,22 +109,18 @@ public class DJTechHomeActivity extends AppCompatActivity
         return true;
     }
 
-    private void displayFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_root, fragment);
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
     @Override
     public void onItemClicked(int position) {
-        Snackbar.make(findViewById(R.id.content_root), "POST - " + position , Snackbar.LENGTH_SHORT).show();
+        displaySnackBarMessage("Position -" + position);
     }
 
     @Override
     public void onAuthorAvatarClicked(int position) {
-        Snackbar.make(findViewById(R.id.content_root), "AUTHOR", Snackbar.LENGTH_SHORT).show();
+        displaySnackBarMessage("AUTHOR -" + position);
+    }
 
+    private void displaySnackBarMessage(String message) {
+        Snackbar.make(findViewById(R.id.content_root), message, Snackbar.LENGTH_SHORT).show();
     }
 }

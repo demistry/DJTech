@@ -2,6 +2,9 @@ package com.kryptkode.cyberman.djtech;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,8 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
+import com.kryptkode.cyberman.djtech.utils.ItemDivider;
+
 public class DJTechHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, HomeScreenFragment.HomeScreenFragmentListener {
+
+    private HomeScreenFragment homeScreenFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,12 @@ public class DJTechHomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        homeScreenFragment = new HomeScreenFragment();
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.content_root, homeScreenFragment);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.commit();
     }
 
     @Override
@@ -71,6 +85,8 @@ public class DJTechHomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
 
+            displayFragment(homeScreenFragment);
+
         } else if (id == R.id.nav_about) {
 
         }  else if (id == R.id.nav_contact_us) {
@@ -82,5 +98,24 @@ public class DJTechHomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void displayFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_root, fragment);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Snackbar.make(findViewById(R.id.content_root), "POST - " + position , Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onAuthorAvatarClicked(int position) {
+        Snackbar.make(findViewById(R.id.content_root), "AUTHOR", Snackbar.LENGTH_SHORT).show();
+
     }
 }

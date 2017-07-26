@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:cyberman="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="4">
+
+    <ImageView
+        android:id="@+id/post_image_view"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/news_poster_margin"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/news_post_poster"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/no_image" />
+
+    <!--TODO: Change post_image_view to AdjustableImageView to enable support for lower APIs-->
+    <!-- <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
+         android:id="@+id/post_image_view"
+         android:layout_width="77dp"
+         android:layout_height="90dp"
+         android:scaleType="centerCrop"
+         android:layout_margin="@dimen/news_poster_margin"
+         android:contentDescription="@string/news_post_poster"
+         android:adjustViewBounds="true"
+         app:srcCompat="@drawable/no_image" />-->
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/post_title_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/news_feed_text_marginTop"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="The Importance of Mobile Apps" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/post_time_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_vertical"
+                android:gravity="start"
+                tools:text="1 hour ago, 4:35 PM" />
+
+            <TextView
+                android:id="@+id/post_author_avatar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/post_author_avatar"
+                android:gravity="center"
+                android:textSize="18sp"
+                tools:text="C" />
+
+            <TextView
+                android:id="@+id/post_author_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/post_time_text_view"
+                android:layout_toLeftOf="@+id/post_author_avatar"
+                android:layout_toRightOf="@+id/post_time_text_view"
+                android:layout_toStartOf="@+id/post_author_avatar"
+                android:gravity="end"
+                android:textSize="12sp"
+                android:layout_marginRight="4dp"
+                android:layout_marginEnd="4dp"
+                tools:text="-By Cyberman" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/post_content_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textAppearance="?android:textAppearance"
+            android:textSize="16sp"
+            tools:text="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" />
+
+        <!--TODO Change the post_content_text_view to DocumentView to Justify the Text -->
+        <!-- <com.bluejamesbond.text.DocumentView
+             android:id="@+id/post_content_text_view"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:ellipsize="end"
+             android:maxLines="3"
+             android:textAppearance="?android:textAppearance"
+             android:textSize="16sp"
+             cyberman:documentView_textAlignment="justified"
+             cyberman:documentView_antialias="true"
+             cyberman:documentView_text="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" />
+-->
+    </LinearLayout>
+
+</LinearLayout>

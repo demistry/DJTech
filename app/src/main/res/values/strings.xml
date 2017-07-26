@@ -13,4 +13,7 @@
     <string name="about">About</string>
     <string name="career">Career</string>
     <string name="contact_us">Contact Us</string>
+    <string name="news_post_poster">News Post Poster</string>
+    <string name="share_button">share button</string>
+    <string name="by_author">-by %s</string>
 </resources>

@@ -13,7 +13,5 @@
     <string name="about">About</string>
     <string name="career">Career</string>
     <string name="contact_us">Contact Us</string>
-    <string name="john_profile">\tJohn is a full stack developer with four years experience building web and mobile applications. He is an Electrical/Electronics Engineer and majors
-        in Electronics Engineering.
-        He is a big fan of the Microsoft technology stack.</string>
+
 </resources>

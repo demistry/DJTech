@@ -1,5 +1,7 @@
 package com.kryptkode.cyberman.djtech;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,20 +11,31 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
 import com.kryptkode.cyberman.djtech.utils.ItemDivider;
 
 import javax.net.ssl.HandshakeCompletedListener;
 
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
+
 public class DJTechHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeScreenFragment.HomeScreenFragmentListener {
 
     HomeScreenFragment homeScreenFragment;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +96,11 @@ public class DJTechHomeActivity extends AppCompatActivity
             startActivity(intent);
             return true;
         }
+        if (id == R.id.settings){
+            Intent intent = new Intent(DJTechHomeActivity.this, Settings.class);
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -100,11 +118,32 @@ public class DJTechHomeActivity extends AppCompatActivity
 
             displaySnackBarMessage("NAV");
         } else if (id == R.id.nav_contact_us) {
-            displaySnackBarMessage("CONTACT");
+            Intent intent = new Intent(DJTechHomeActivity.this, ContactUsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
             displaySnackBarMessage("SHARE");
 
+        } else if (id == R.id.nav_rate) {
+            final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+            LayoutInflater layoutInflater = LayoutInflater.from(this);
+            View v = layoutInflater.inflate(R.layout.rating_layout, null);
+            MaterialRatingBar ratingBar = (MaterialRatingBar) v.findViewById(R.id.ratingBar);
+            if (ratingBar.getParent() != null){
+                ((ViewGroup) ratingBar.getParent()).removeView(ratingBar);
+            }
+            alertBuilder.setView(ratingBar);
+            alertBuilder.setCancelable(true);
+            alertBuilder.setTitle("Rate this App");
+            alertBuilder.setPositiveButton("Rate", new AlertDialog.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    Toast.makeText(context,"Thanks for Rating", Toast.LENGTH_LONG).show();
+                }
+            });
+            AlertDialog alertDialog = alertBuilder.create();
+            alertDialog.show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

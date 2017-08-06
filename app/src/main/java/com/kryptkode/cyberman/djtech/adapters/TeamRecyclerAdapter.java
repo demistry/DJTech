@@ -100,6 +100,7 @@ public class TeamRecyclerAdapter extends RecyclerView.Adapter <TeamRecyclerAdapt
     @Override
     public TeamViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_team_members,parent, false);
+        view.setMinimumWidth(parent.getMinimumWidth());
         return new TeamViewHolder(view);
     }
 

@@ -1,5 +1,6 @@
 package com.kryptkode.cyberman.djtech;
 
+import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,11 +9,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.kryptkode.cyberman.djtech.adapters.TeamRecyclerAdapter;
+import com.kryptkode.cyberman.djtech.ui.fragments.ProfilePictureFragment;
 import com.kryptkode.cyberman.djtech.utils.ItemDivider;
 
 import org.json.JSONArray;
@@ -29,9 +35,12 @@ public class TeamMembersActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private TeamRecyclerAdapter teamRecyclerAdapter;
     private JSONArray jsonArray;
+    SnapHelper snap;
     private List<DummyClass> list = new ArrayList<>();
-    int [] images = {R.drawable.david,R.drawable.john_esan,R.drawable.paul,R.drawable.marvex,
-            R.drawable.isaiah,R.drawable.udoka,R.drawable.mirabel, R.drawable.stone};
+    int [] images = {R.drawable.david_2,R.drawable.john_esan,R.drawable.paul,R.drawable.marvex2,
+            R.drawable.isaiah,R.drawable.udoka_2,R.drawable.mirabello_2, R.drawable.stone};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,55 +85,87 @@ public class TeamMembersActivity extends AppCompatActivity {
                 openInstagramProfile(position);
             }
         });
-        rv.addItemDecoration(new ItemDivider(this));
-        rv.setFitsSystemWindows(true);
-        rv.smoothScrollToPosition(0);
+        snap = new LinearSnapHelper();
+        rv.setHasFixedSize(true);
         rv.setLayoutManager(linearLayoutManager);
+        snap.attachToRecyclerView(rv);
         rv.setAdapter(teamRecyclerAdapter);
 
     }
 
 
+
     //method for profile picture
     public void openProfilePicture(int profile){
-        View view = getLayoutInflater().from(this).inflate(R.layout.image_dialog_view, null);
-        ImageView profilePic =(ImageView) view.findViewById(R.id.alertDialogImage);
-        AlertDialog.Builder alert = new AlertDialog.Builder(TeamMembersActivity.this);
-        alert.setCancelable(true);
+        ProfilePictureFragment ppFrag = new ProfilePictureFragment();
+        Bundle bundle = new Bundle();
+        android.support.v4.app.FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
         switch (profile){
             case 0:
-                profilePic.setImageResource(R.drawable.david);
-                alert.setView(view);
+                bundle.putInt("Position", profile);
+                ppFrag.setArguments(bundle);
+                fragTrans.replace(R.id.frag_container, ppFrag);
+                fragTrans.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_ENTER_MASK);
+                fragTrans.addToBackStack(null);
+                fragTrans.commit();
                 break;
             case 1:
-                profilePic.setImageResource(R.drawable.john_esan);
-                alert.setView(view);
+                bundle.putInt("Position", profile);
+                ppFrag.setArguments(bundle);
+                fragTrans.replace(R.id.frag_container, ppFrag);
+                fragTrans.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_ENTER_MASK);
+                fragTrans.addToBackStack(null);
+                fragTrans.commit();
                 break;
             case 2:
-                profilePic.setImageResource(R.drawable.paul);
-                alert.setView(view);
+                bundle.putInt("Position", profile);
+                ppFrag.setArguments(bundle);
+                fragTrans.replace(R.id.frag_container, ppFrag);
+                fragTrans.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_ENTER_MASK);
+                fragTrans.addToBackStack(null);
+                fragTrans.commit();
                 break;
-            case 3: profilePic.setImageResource(R.drawable.marvex);
-                alert.setView(view);
+            case 3:
+                bundle.putInt("Position", profile);
+                ppFrag.setArguments(bundle);
+                fragTrans.replace(R.id.frag_container, ppFrag);
+                fragTrans.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_ENTER_MASK);
+                fragTrans.addToBackStack(null);
+                fragTrans.commit();
                 break;
-            case 4: profilePic.setImageResource(R.drawable.isaiah);
-                alert.setView(view);
+            case 4:
+                bundle.putInt("Position", profile);
+                ppFrag.setArguments(bundle);
+                fragTrans.replace(R.id.frag_container, ppFrag);
+                fragTrans.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_ENTER_MASK);
+                fragTrans.addToBackStack(null);
+                fragTrans.commit();
                 break;
             case 5:
-                profilePic.setImageResource(R.drawable.udoka);
-                alert.setView(view);
+                bundle.putInt("Position", profile);
+                ppFrag.setArguments(bundle);
+                fragTrans.replace(R.id.frag_container, ppFrag);
+                fragTrans.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_ENTER_MASK);
+                fragTrans.addToBackStack(null);
+                fragTrans.commit();
                 break;
             case 6:
-                profilePic.setImageResource(R.drawable.mirabel);
-                alert.setView(view);
+                bundle.putInt("Position", profile);
+                ppFrag.setArguments(bundle);
+                fragTrans.replace(R.id.frag_container, ppFrag);
+                fragTrans.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_ENTER_MASK);
+                fragTrans.addToBackStack(null);
+                fragTrans.commit();
                 break;
             case 7:
-                profilePic.setImageResource(R.drawable.stone);
-                alert.setView(view);
+                bundle.putInt("Position", profile);
+                ppFrag.setArguments(bundle);
+                fragTrans.replace(R.id.frag_container, ppFrag);
+                fragTrans.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_ENTER_MASK);
+                fragTrans.addToBackStack(null);
+                fragTrans.commit();
                 break;
         }
-        AlertDialog alertDialog = alert.create();
-        alertDialog.show();
     }
 
     //create method for facebook intents

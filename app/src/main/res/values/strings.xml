@@ -16,4 +16,9 @@
     <string name="news_post_poster">News Post Poster</string>
     <string name="share_button">share button</string>
     <string name="by_author">-by %s</string>
+    <string name="text_error_text_view">Unable to load data \n Check your internet connection</string>
+    <string name="text_loading_">Loading…</string>
+    <string name="no_internet_error_image">No internet error image</string>
+    <string name="refreshing">Refreshing…</string>
+    <string name="title_activity_blog_post_detail">BlogPostDetailActivity</string>
 </resources>

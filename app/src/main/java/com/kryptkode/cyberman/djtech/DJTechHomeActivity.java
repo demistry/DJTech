@@ -1,5 +1,6 @@
 package com.kryptkode.cyberman.djtech;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -13,14 +14,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.kryptkode.cyberman.djtech.models.BlogPosts;
 import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
 import com.kryptkode.cyberman.djtech.utils.ItemDivider;
 
+import java.util.ArrayList;
+
 import javax.net.ssl.HandshakeCompletedListener;
+
+import static com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment.POSTS;
 
 public class DJTechHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeScreenFragment.HomeScreenFragmentListener {
 
+    public static final String EXTRA = "posts";
     HomeScreenFragment homeScreenFragment;
 
     @Override
@@ -111,8 +118,13 @@ public class DJTechHomeActivity extends AppCompatActivity
 
 
     @Override
-    public void onItemClicked(int position) {
+    public void onItemClicked(int position, BlogPosts postsArrayList) {
         displaySnackBarMessage("Position -" + position);
+        Intent intent  = new Intent (this, BlogPostDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(POSTS, postsArrayList);
+        intent.putExtra(EXTRA, bundle);
+        startActivity(intent);
     }
 
     @Override

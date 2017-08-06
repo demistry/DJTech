@@ -66,7 +66,7 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
         //bind the views with data
         postImageView.setImageResource(R.drawable.no_image);
         postTitleTextView.setText(post.getPostTitle());
-        postAuthorTextView.setText(context.getString(R.string.by_author, author));
+        postAuthorTextView.setText(post.getPostAuthor());
         postTimeTextView.setText(post.getPostTime());
         postContentTextView.setText(post.getPostContent());
         postAvatarTextView.setText(firstLetter);

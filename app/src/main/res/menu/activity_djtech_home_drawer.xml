@@ -15,6 +15,10 @@
             android:id="@+id/nav_contact_us"
             android:icon="@drawable/ic_contact_black_24dp"
             android:title="@string/contact_us" />
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_star_black_24dp"
+            android:title="@string/rating"/>
     </group>
 
     <item android:title="@string/publicise">

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:cyberman="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -15,7 +16,6 @@
         android:layout_margin="@dimen/news_poster_margin"
         android:layout_weight="1"
         android:adjustViewBounds="true"
-        android:contentDescription="@string/news_post_poster"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/no_image" />
 

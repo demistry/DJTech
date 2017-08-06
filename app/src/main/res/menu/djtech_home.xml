@@ -2,8 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/team_executives"
+        android:orderInCategory="0"
+        android:title="Team"
+        android:icon="@drawable/team_24"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/settings"
+        android:orderInCategory="1"
+        android:title="Settings"
+        android:icon="@drawable/settings_24"
+        app:showAsAction="ifRoom">
+    </item>
 </menu>

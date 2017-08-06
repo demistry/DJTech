@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kryptkode.cyberman.djtech.R;
+import com.kryptkode.cyberman.djtech.models.BlogPosts;
 import com.kryptkode.cyberman.djtech.models.Posts;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 
 public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.HomeScreenViewHolder>{
 
-    private ArrayList<Posts> postsArrayList; //for testing  purposes
+    private ArrayList<BlogPosts> postsArrayList; //for testing  purposes
     private LayoutInflater inflater;
     private Context context;
     private HomeScreenAdapterListener homeScreenAdapterListener;
@@ -36,7 +37,7 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
         this.homeScreenAdapterListener = homeScreenAdapterListener;
     }
 
-    public HomeScreenAdapter(Context context, ArrayList<Posts> postsArrayList) {
+    public HomeScreenAdapter(Context context, ArrayList<BlogPosts> postsArrayList) {
         inflater = LayoutInflater.from(context);
         this.context = context;
         this.postsArrayList = postsArrayList;
@@ -50,7 +51,7 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
     @Override
     public void onBindViewHolder(HomeScreenViewHolder holder, int position) {
         //data source
-        Posts post = postsArrayList.get(position);
+        BlogPosts post = postsArrayList.get(position);
 
         //views
         ImageView postImageView = holder.postImageView;
@@ -60,16 +61,24 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
         TextView postContentTextView = holder.postContentTextView;
         TextView postAvatarTextView = holder.postAvatarTextView;
 
-        String author = post.getPostAuthor();
-        String firstLetter = author.substring(0, 1).toUpperCase();
+       /* String author = post.getAuthor();
+        String firstLetter = author.substring(0, 1).toUpperCase();*/
 
         //bind the views with data
         postImageView.setImageResource(R.drawable.no_image);
+
+        postTitleTextView.setText(post.getTitle());
+        postAuthorTextView.setText(context.getString(R.string.by_author, "Anonymous"));
+        postTimeTextView.setText(post.getDate());
+        postContentTextView.setText(post.getContent());
+       // postAvatarTextView.setText(firstLetter);
+
         postTitleTextView.setText(post.getPostTitle());
         postAuthorTextView.setText(post.getPostAuthor());
         postTimeTextView.setText(post.getPostTime());
         postContentTextView.setText(post.getPostContent());
         postAvatarTextView.setText(firstLetter);
+
 
 
 

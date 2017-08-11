@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/app_info_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_above="@+id/app_info_sub_text"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:text="@string/djtech_app"/>
+    <TextView
+        android:id="@+id/app_info_sub_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/app_info_icon"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:text="@string/version_1_0"/>
+
+    <ImageView
+        android:id="@+id/app_info_icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/ic_dj_tech_app_icon"
+        android:contentDescription="@string/dj_tech_logo" />
+    <TextView
+        android:id="@+id/app_info_footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_below="@+id/app_info_icon"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:text="@string/u00a9_2017_www_djtech_com_ng"/>
+
+    <TextView
+        android:id="@+id/app_info_footer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_below="@+id/app_info_footer"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:text="@string/all_rights"/>
+
+</RelativeLayout>

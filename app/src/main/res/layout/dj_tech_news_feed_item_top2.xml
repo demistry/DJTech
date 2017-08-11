@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:cyberman="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -15,7 +16,6 @@
         android:layout_margin="@dimen/news_poster_margin"
         android:layout_weight="1"
         android:adjustViewBounds="true"
-        android:contentDescription="@string/news_post_poster"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/no_image" />
 
@@ -93,6 +93,8 @@
 
         </RelativeLayout>
 
+
+
         <TextView
             android:id="@+id/post_content_text_view"
             android:layout_width="wrap_content"
@@ -103,7 +105,6 @@
             android:textAppearance="?android:textAppearance"
             android:textSize="16sp"
             tools:text="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum" />
-
         <!--TODO Change the post_content_text_view to DocumentView to Justify the Text -->
         <!-- <com.bluejamesbond.text.DocumentView
              android:id="@+id/post_content_text_view"

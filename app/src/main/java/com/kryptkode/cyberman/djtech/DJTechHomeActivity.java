@@ -1,7 +1,15 @@
 package com.kryptkode.cyberman.djtech;
 
+
+import android.content.Context;
+import android.content.DialogInterface;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -9,10 +17,19 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kryptkode.cyberman.djtech.models.BlogPosts;
 import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
@@ -22,13 +39,20 @@ import java.util.ArrayList;
 
 import javax.net.ssl.HandshakeCompletedListener;
 
+
+import static com.kryptkode.cyberman.djtech.SettingsActivity.toggleTheme;
 import static com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment.POSTS;
+
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
+
 
 public class DJTechHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeScreenFragment.HomeScreenFragmentListener {
 
     public static final String EXTRA = "posts";
     HomeScreenFragment homeScreenFragment;
+    Context context = this;
+    public final String PREFS_THEME = "theme_prefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +61,11 @@ public class DJTechHomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        PreferenceManager.setDefaultValues(this, R.xml.settings_preference, false);
+
+        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(this);
+        int themeSelect = Integer.parseInt(preference.getString(PREFS_THEME, "0"));
+        toggleTheme(themeSelect);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,12 +80,41 @@ public class DJTechHomeActivity extends AppCompatActivity
 
     }
 
+
+
     private void displayFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_root, fragment);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    SharedPreferences.OnSharedPreferenceChangeListener preferenceListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            if(key.equals(PREFS_THEME)){
+                int themeSelect = Integer.parseInt(sharedPreferences.getString(PREFS_THEME, "0"));
+                toggleTheme(themeSelect);
+            }
+        }
+    };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        PreferenceManager.getDefaultSharedPreferences(this).
+                registerOnSharedPreferenceChangeListener(preferenceListener);
+
+
+    }
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .unregisterOnSharedPreferenceChangeListener(preferenceListener);
     }
 
     @Override
@@ -84,7 +142,14 @@ public class DJTechHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.team_executives) {
+            Intent intent = new Intent(DJTechHomeActivity.this, TeamMembersActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.settings){
+            Intent intent = new Intent(DJTechHomeActivity.this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -104,11 +169,39 @@ public class DJTechHomeActivity extends AppCompatActivity
 
             displaySnackBarMessage("NAV");
         } else if (id == R.id.nav_contact_us) {
-            displaySnackBarMessage("CONTACT");
+            Intent intent = new Intent(DJTechHomeActivity.this, ContactUsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
             displaySnackBarMessage("SHARE");
 
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Check out this app");
+            intent.putExtra(Intent.EXTRA_TEXT, "Want cool apps and  website for your business? \nDownload DJTech app \nhttps://github.com/DJTech/DJTech");
+            Intent chooserIntent = Intent.createChooser(intent, "Share with...");
+            startActivity(chooserIntent);
+
+        } else if (id == R.id.nav_rate) {
+            final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+            LayoutInflater layoutInflater = LayoutInflater.from(this);
+            View v = layoutInflater.inflate(R.layout.rating_layout, null);
+            MaterialRatingBar ratingBar = (MaterialRatingBar) v.findViewById(R.id.ratingBar);
+            if (ratingBar.getParent() != null){
+                ((ViewGroup) ratingBar.getParent()).removeView(ratingBar);
+            }
+            alertBuilder.setView(ratingBar);
+            alertBuilder.setCancelable(true);
+            alertBuilder.setTitle("Rate this App");
+            alertBuilder.setPositiveButton("Rate", new AlertDialog.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    Toast.makeText(context,"Thanks for Rating", Toast.LENGTH_LONG).show();
+                }
+            });
+            AlertDialog alertDialog = alertBuilder.create();
+            alertDialog.show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

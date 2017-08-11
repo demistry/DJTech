@@ -9,5 +9,5 @@
         android:layout_height="wrap_content"
         android:background="@drawable/background_state"
         app:srcCompat = "@drawable/ic_menu_share"
-        android:contentDescription="@string/share_button" />
+        android:contentDescription="@string/share" />
 </LinearLayout>

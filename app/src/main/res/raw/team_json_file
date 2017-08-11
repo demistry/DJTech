@@ -1,0 +1,66 @@
+[
+  {
+    "name" : "DAVID ILENWABOR",
+    "position" : "Mobile App Developer",
+    "profile" : "David began coding in 2014 and is into developing mobile applications for Android phones, iPhones, iPads and also cross platform applications. He is an Electrical/Electronics Engineer, specializing in Electronics. He is a big fan of the Android Community and takes keen interest in microsoft as well.",
+    "phone_number" : "+234-703-668-6758",
+    "email" : "david@djtech.com.ng"
+  },
+
+  {
+    "name" : "JOHN ESAN",
+    "position" : "Web Developer",
+    "profile" : "John is a full stack developer with four years experience building web and mobile applications. He is an Electrical/Electronics Engineer and majors in Electronics Engineering. He is a big fan of the Microsoft technology stack.",
+    "phone_number" : "+234-818-256-1710",
+    "email" : "john@djtech.com.ng"
+  },
+
+
+  {
+    "name" : "PAUL AKHAMIOGU",
+    "position" : "Mobile App Developer",
+    "profile" : "Also called Cyberman, Paul a is highly proficient mobile app developer with experience also in web development. An Electrical/Electronics Engineer, he is knowledgeable in almost every field of programming, a subject he has a strong passion for and which is virtually his life.",
+    "phone_number" : "+234-816-280-2275",
+    "email" : "paul@djtech.com.ng"
+  },
+
+  {
+    "name" : "MARVELOUS EMOGHENE",
+    "position" : "Web Developer",
+    "profile" : "Marvelous began coding in 2013 and is into developing websites and general web development. A Mechanical Engineer, he is a great enthusiast of website design and development and is very proficient in both front and backend designs.",
+    "phone_number" : "+234-909-836-3259",
+    "email" : "marvelous@djtech.com.ng"
+  },
+
+  {
+    "name" : "ISAIAH BAKARE",
+    "position" : "Digital Marketer",
+    "profile" : "Isaiah Bakare is a medicine and surgery undergraduate, whose passion for technology and innovations has put him on a path of bridging the gap between technology and life in general. He currently functions as a publicist for the innovative firm DjTech Company which runs with the same vision.",
+    "phone_number" : "+234-706-967-0974",
+    "email" : "isaiah@djtech.com.ng"
+  },
+
+  {
+    "name" : "Udoka Onyebuolise",
+    "position" : "Graphics Designer",
+    "profile" : "Graphic designer, brand and identity designer. Graduate of Animal and Environmental Biology. A great enthusiast of digital arts. Proficient in Adobe Photoshop and Illustrator.",
+    "phone_number" : "+234-816-767-3292",
+    "email" : "udoka@djtech.com.ng"
+  },
+
+  {
+      "name" : "Mirabel Uchechukwu",
+      "position" : "Business Specialist",
+      "profile" : "Mirabelle is a certified and highly proficient Linguist. She is also a translator, an editor, a digital marketer and equally a business coach and adviser.",
+      "phone_number" : "+234-816-494-8105",
+      "email" : "mirabel@djtech.com.ng"
+  },
+
+  {
+    "name" : "LIVINGSTONE IMONITIE",
+    "position" : "Business Specialist",
+    "profile" : "Livingstone 'STONE' Imonitie is a prospective Civil Engineer turned Digitial Marketer. He is a writer, a blogger, public speaker, and a Google Certified Online marketer. He also functions as a Business Coach and adviser",
+    "phone_number" : "+234-810-606-8693",
+    "email" : "livingstone@djtech.com.ng"
+  }
+]

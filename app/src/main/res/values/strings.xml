@@ -24,11 +24,13 @@
     <string name="title_activity_blog_post_detail">BlogPostDetailActivity</string>
 
 
+
     <string name="web_developer">WEB DEVELOPER</string>
     <string name="mobile_app_developer">MOBILE APP DEVELOPER</string>
     <string name="business_specialist">BUSINESS SPECIALIST</string>
     <string name="graphics_designer">GRAPHICS DESIGNER</string>
     <string name="online_publicist">ONLINE PUBLICIST</string>
+
 
 
     <string name="rating">Rating</string>
@@ -62,5 +64,9 @@
     <string name="theme_change_toast_texrt">Changes will take effect when you navigate back</string>
     <string name="error_occurred">An error occurred!</string>
     <string name="isaiah">Isaiah Bakare</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rating">Rating</string>
+
 
 </resources>

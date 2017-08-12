@@ -46,4 +46,22 @@ public class NetworkUtils {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
+
+    public static String getPosterUrl(String mediaUrl) {
+        Response response;
+        try {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(mediaUrl)
+                    .build();
+            response = client.newCall(request).execute();
+            if(response.isSuccessful()){
+                Log.i(TAG, "getDataFromWeb: " + response.body().toString());
+                return response.body().string(); //returns the JSON data
+            }
+        } catch (IOException | NullPointerException e) {
+            Log.e(TAG, "" + e.getLocalizedMessage());
+        }
+        return null; //if there is an error, return null
+    }
 }

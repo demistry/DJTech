@@ -4,6 +4,8 @@ import android.content.Context;
 import android.preference.PreferenceFragment;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import com.kryptkode.cyberman.djtech.R;
 import com.kryptkode.cyberman.djtech.models.BlogPosts;
 import com.kryptkode.cyberman.djtech.models.Posts;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -22,7 +25,7 @@ import java.util.ArrayList;
  */
 
 public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.HomeScreenViewHolder>{
-
+    public static final String TAG = "HomeScreenAdapter";
     private ArrayList<BlogPosts> postsArrayList; //for testing  purposes
     private LayoutInflater inflater;
     private Context context;
@@ -65,13 +68,29 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
         String firstLetter = author.substring(0, 1).toUpperCase();*/
 
         //bind the views with data
+
         postImageView.setImageResource(R.drawable.no_image);
 
+
         postTitleTextView.setText(post.getTitle());
-        postAuthorTextView.setText(context.getString(R.string.by_author, "Anonymous"));
+        postAuthorTextView.setText(context.getString(R.string.by_author, context.getString(R.string.isaiah)));
         postTimeTextView.setText(post.getDate());
-        postContentTextView.setText(post.getContent());
-       // postAvatarTextView.setText(firstLetter);
+        postContentTextView.setText(stripHtml(post.getExcerpt()));
+
+        Log.i(TAG, "onBindViewHolder: " +post.getPosterUrl() );
+        Log.i(TAG, "onBindViewHolder: " + post.getMediaUrl());
+
+        Picasso.with(context).load(post.getPosterUrl())
+                .placeholder(R.drawable.loading).
+                error(R.drawable.no_image).into(postImageView);
+        postAvatarTextView.setText("I");
+
+       /* postTitleTextView.setText(post.getTitle());
+        postAuthorTextView.setText(post.getPostAuthor());
+        postTimeTextView.setText(post.getDate());
+        postContentTextView.setText(post.getPostContent());
+        postAvatarTextView.setText(firstLetter);*/
+
 
         postTitleTextView.setText(post.getPostTitle());
         postAuthorTextView.setText(post.getPostAuthor());
@@ -88,6 +107,14 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
     @Override
     public int getItemCount() {
         return postsArrayList.size();
+    }
+
+    public String stripHtml(String html) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            return String.valueOf(Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            return String.valueOf(Html.fromHtml(html));
+        }
     }
 
     class HomeScreenViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

@@ -41,15 +41,32 @@
         <activity
             android:name=".BlogPostDetailActivity"
             android:label="@string/title_activity_blog_post_detail"
-            android:parentActivityName=".DJTechHomeActivity"
-            >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".DJTechHomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kryptkode.cyberman.djtech.DJTechHomeActivity" />
+        </activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".ContactUsActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".DJTechHomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.kryptkode.cyberman.djtech.DJTechHomeActivity" />
         </activity>
 
+
+            android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor"
+            android:theme="@style/FinestWebViewTheme.Light" />
+
         <activity android:name=".Settings" />
         <activity android:name=".ContactUsActivity"></activity>
+
 
     </application>
 

@@ -19,19 +19,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kryptkode.cyberman.djtech.R;
 import com.kryptkode.cyberman.djtech.adapters.HomeScreenAdapter;
 import com.kryptkode.cyberman.djtech.models.BlogPosts;
-import com.kryptkode.cyberman.djtech.models.Posts;
 import com.kryptkode.cyberman.djtech.utils.HomeScreenFragmentHelper;
 import com.kryptkode.cyberman.djtech.utils.ItemDivider;
 import com.kryptkode.cyberman.djtech.utils.JsonHelper;
 import com.kryptkode.cyberman.djtech.utils.NetworkUtils;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -40,7 +36,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.HomeScreenAdapterListener,
-        LoaderManager.LoaderCallbacks<String>{
+        LoaderManager.LoaderCallbacks<BlogPosts[]> {
 
     public static final int POST_LOADER_ID = 100;
     public static final String TAG = HomeScreenFragment.class.getSimpleName();
@@ -73,8 +69,9 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
     private ConnectivityChangeReceiver receiver;
 
 
-    public interface HomeScreenFragmentListener{
+    public interface HomeScreenFragmentListener {
         void onItemClicked(int position, BlogPosts blogPostsArrayList);
+
         void onAuthorAvatarClicked(int position);
     }
 
@@ -106,7 +103,7 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
 
         if (savedInstanceState != null && savedInstanceState.containsKey(POSTS)) {
             postsArrayList = savedInstanceState.getParcelableArrayList(POSTS);
-        }else{
+        } else {
 
             postsArrayList = new ArrayList<>();
         }
@@ -126,14 +123,23 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
         progressBar = (ProgressBar) view.findViewById(R.id.loading_progress_bar);
 
 
-        if(NetworkUtils.isOnline(getContext())){
-            getLoaderManager().initLoader(POST_LOADER_ID, null, this);
-        }else{
+        if (NetworkUtils.isOnline(getContext())) {
+            createLoader();
+        } else {
             //if the device is not online show the error indicatiors
             HomeScreenFragmentHelper.indicatorsAppear(new View[]{errorTextView, errorImageView}, true);
         }
 
         return view;
+    }
+
+    private void createLoader() {
+        if (getLoaderManager() != null) {
+            getLoaderManager().restartLoader(POST_LOADER_ID, null, this);
+        } else {
+            getLoaderManager().initLoader(POST_LOADER_ID, null, this);
+
+        }
     }
 
     @Override
@@ -153,13 +159,13 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
     };
 
     private void refreshRecyclerView() {
-       // addNewItemsToList(10);
+        // addNewItemsToList(10);
         onItemsLoaded();
         Snackbar.make(view.findViewById(R.id.post_root), R.string.refreshing, Snackbar.LENGTH_SHORT).show();
     }
 
-    private void addNewItemsToList(BlogPosts [] arrayList) {
-        for (BlogPosts post:arrayList ) {
+    private void addNewItemsToList(BlogPosts[] arrayList) {
+        for (BlogPosts post : arrayList) {
             postsArrayList.add(post);
             Log.i(TAG, "addNewItemsToList: -->" + post.getId());
         }
@@ -204,10 +210,10 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
 
     //loader methods
     @Override
-    public Loader<String> onCreateLoader(int id, Bundle args) {
+    public Loader<BlogPosts[]> onCreateLoader(int id, Bundle args) {
         HomeScreenFragmentHelper.indicatorsAppear(new View[]{progressBar, loadingTextView}, true);
         HomeScreenFragmentHelper.indicatorsAppear(new View[]{recyclerView}, false);
-        switch(id){
+        switch (id) {
             case POST_LOADER_ID:
                 return new HomeScreenFragmentHelper.HomeAsyncTaskLoader(getContext());
             default:
@@ -217,19 +223,22 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
     }
 
     @Override
-    public void onLoadFinished(Loader<String> loader, String data) {
+    public void onLoadFinished(Loader<BlogPosts[]> loader, BlogPosts[] data) {
+        if (data != null) {
+            addNewItemsToList(data);
+        } else {
+            Toast.makeText(getContext(), R.string.error_occurred, Toast.LENGTH_LONG).show();
+            return;
+        }
         HomeScreenFragmentHelper.indicatorsAppear(new View[]{progressBar, loadingTextView}, false);
         HomeScreenFragmentHelper.indicatorsAppear(new View[]{recyclerView}, true);
-        addNewItemsToList(JsonHelper.parseJson(data));
         adapter.notifyDataSetChanged();
     }
 
     @Override
-    public void onLoaderReset(Loader<String> loader) {
+    public void onLoaderReset(Loader<BlogPosts[]> loader) {
 
     }
-
-
 
 
 }

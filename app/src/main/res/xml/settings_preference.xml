@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/prefs_appearance">
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/theme_options"
+            android:entryValues="@array/theme_options_prefs"
+            android:key="@string/theme_prefs_key"
+            android:persistent="true"
+            android:title="Choose theme" />
+
+        <Preference
+            android:key="@string/prefs_background"
+            android:title="@string/prefs_bg_title">
+            <intent android:action="com.kryptkode.cyberman.djtech.TeamMembersActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/prefs_assistance">
+
+        <Preference
+            android:key="@string/faqs"
+            android:title="@string/prefs_FAQs" />
+
+
+        <PreferenceScreen
+            android:key="@string/prefs_information_key"
+            android:title="@string/prefs_information"
+            >
+
+            <Preference
+                android:key="@string/prefs_app_info_key"
+                android:title="@string/prefs_app_info" />
+            <Preference
+                android:key="@string/prefs_policy_key"
+                android:title="@string/prefs_policy" />
+            <Preference
+                android:key="@string/prefs_credits_key"
+                android:title="@string/prefs_credits" />
+            <Preference
+                android:key="@string/prefs_visit_site_key"
+                android:title="@string/prefs_visit_site" />
+
+
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>

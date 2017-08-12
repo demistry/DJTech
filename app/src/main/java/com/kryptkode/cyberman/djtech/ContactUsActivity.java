@@ -33,7 +33,11 @@ public class ContactUsActivity extends AppCompatActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 progressDialog.setMessage("Contact Form Loading...");
+
+                progressDialog.setCancelable(true);
+
                 progressDialog.setCancelable(false);
+
                 progressDialog.show();
             }
 

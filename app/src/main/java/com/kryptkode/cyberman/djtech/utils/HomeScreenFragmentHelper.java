@@ -2,8 +2,10 @@ package com.kryptkode.cyberman.djtech.utils;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
+import android.util.Log;
 import android.view.View;
 
+import com.kryptkode.cyberman.djtech.models.BlogPosts;
 import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
 
 /**
@@ -11,7 +13,7 @@ import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
  */
 
 public class HomeScreenFragmentHelper {
-
+    public static final String TAG = HomeScreenFragmentHelper.class.getSimpleName();
 
     public static void indicatorsAppear(View [] views, boolean shouldAppear){
         for (View view :views             ) {
@@ -24,12 +26,12 @@ public class HomeScreenFragmentHelper {
         }
     }
 
-    public static class HomeAsyncTaskLoader extends AsyncTaskLoader<String>{
+    public static class HomeAsyncTaskLoader extends AsyncTaskLoader<BlogPosts[]>{
 
         public HomeAsyncTaskLoader(Context context) {
             super(context);
         }
-        private String data;
+        private BlogPosts[] data;
 
         @Override
         protected void onStartLoading() {
@@ -42,16 +44,20 @@ public class HomeScreenFragmentHelper {
         }
 
         @Override
-        public void deliverResult(String data) {
+        public void deliverResult(BlogPosts[] data) {
             this.data = data;
             super.deliverResult(data);
         }
 
         @Override
-        public String loadInBackground() {
+        public BlogPosts[] loadInBackground() {
            try {
                String url = "http://djtech.com.ng/wp-json/wp/v2/posts";
-               data = NetworkUtils.getDataFromWeb(url);
+               String rawData = NetworkUtils.getDataFromWeb(url);
+               Log.i(TAG, "loadInBackground: " + rawData);
+               data = JsonHelper.parsePostsJson(rawData);
+               assert data != null;
+               Log.i(TAG, "loadInBackground: " + data.length);
                return data;
            }catch (Exception e){
                 e.printStackTrace();

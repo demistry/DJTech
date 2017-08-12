@@ -116,6 +116,8 @@ public class DJTechHomeActivity extends AppCompatActivity
         super.onResume();
         SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(this);
         preference.registerOnSharedPreferenceChangeListener(preferenceListener);
+        int themeSelect = Integer.parseInt(preference.getString(PREFS_THEME, "0"));
+        toggleTheme(themeSelect);
 
     }
 

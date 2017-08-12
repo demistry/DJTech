@@ -2,20 +2,16 @@ package com.kryptkode.cyberman.djtech;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatDelegate;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
 import android.widget.Toast;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class SettingsActivityFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener{
+public class SettingsActivityFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener{
     public final String PREFS_THEME = "theme_prefs";
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,6 +19,11 @@ public class SettingsActivityFragment extends PreferenceFragment implements Shar
         addPreferencesFromResource(R.xml.settings_preference);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         setListSummary(PREFS_THEME, sharedPreferences);
+
+    }
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
     }
 

@@ -2,8 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kryptkode.cyberman.djtech">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET">
+
+    </uses-permission>
+
 
     <application
         android:allowBackup="true"
@@ -25,8 +31,13 @@
         <activity
             android:name=".TeamMembersActivity"
             android:label="Team Member">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
         <activity
             android:name=".BlogPostDetailActivity"
             android:label="@string/title_activity_blog_post_detail"
@@ -47,11 +58,15 @@
                 android:value="com.kryptkode.cyberman.djtech.DJTechHomeActivity" />
         </activity>
 
-        <activity
+
             android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="sensor"
             android:theme="@style/FinestWebViewTheme.Light" />
+
+        <activity android:name=".Settings" />
+        <activity android:name=".ContactUsActivity"></activity>
+
 
     </application>
 

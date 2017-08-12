@@ -3,6 +3,7 @@ package com.kryptkode.cyberman.djtech;
 
 import android.content.Context;
 import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,13 +17,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+
 import android.support.v7.app.AppCompatDelegate;
+
+import android.support.v7.widget.AlertDialogLayout;
+
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.RatingBar;
+import android.widget.TextView;
+
 import android.widget.Toast;
 
 import com.kryptkode.cyberman.djtech.models.BlogPosts;
@@ -30,7 +39,12 @@ import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
 
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
+
 import static com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment.POSTS;
+
+
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
+
 
 
 public class DJTechHomeActivity extends AppCompatActivity
@@ -39,7 +53,9 @@ public class DJTechHomeActivity extends AppCompatActivity
     public static final String EXTRA = "posts";
     HomeScreenFragment homeScreenFragment;
     Context context = this;
+
     public final String PREFS_THEME = "theme_prefs";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +161,11 @@ public class DJTechHomeActivity extends AppCompatActivity
             return true;
         }
         if (id == R.id.settings){
+
             Intent intent = new Intent(DJTechHomeActivity.this, SettingsActivity.class);
+
+            Intent intent = new Intent(DJTechHomeActivity.this, Settings.class);
+
             startActivity(intent);
             return true;
         }
@@ -172,12 +192,14 @@ public class DJTechHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
             displaySnackBarMessage("SHARE");
 
+
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, "Check out this app");
             intent.putExtra(Intent.EXTRA_TEXT, "Want cool apps and  website for your business? \nDownload DJTech app \nhttps://github.com/DJTech/DJTech");
             Intent chooserIntent = Intent.createChooser(intent, "Share with...");
             startActivity(chooserIntent);
+
 
         } else if (id == R.id.nav_rate) {
             final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);

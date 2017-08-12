@@ -23,13 +23,34 @@ public class BlogPosts implements Parcelable {
     public void setAuthorId(int authorId) {
         this.authorId = authorId;
     }
-
+    private String excerpt;
     private String date;
     private String link;
     private String title;
     private String content;
     private String author;
+    private String mediaUrl;
     private String posterUrl;
+
+    public String getPosterUrl() {
+        return posterUrl;
+    }
+
+    public void setPosterUrl(String posterUrl) {
+        this.posterUrl = posterUrl;
+    }
+
+
+
+    public String getExcerpt() {
+        return excerpt;
+    }
+
+    public void setExcerpt(String excerpt) {
+        this.excerpt = excerpt;
+    }
+
+
 
     public String getTitle() {
         return title;
@@ -79,12 +100,12 @@ public class BlogPosts implements Parcelable {
         this.author = author;
     }
 
-    public String getPosterUrl() {
-        return posterUrl;
+    public String getMediaUrl() {
+        return mediaUrl;
     }
 
-    public void setPosterUrl(String posterUrl) {
-        this.posterUrl = posterUrl;
+    public void setMediaUrl(String mediaUrl) {
+        this.mediaUrl = mediaUrl;
     }
 
 
@@ -111,22 +132,26 @@ public class BlogPosts implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.id);
         dest.writeInt(this.authorId);
+        dest.writeString(this.excerpt);
         dest.writeString(this.date);
         dest.writeString(this.link);
         dest.writeString(this.title);
         dest.writeString(this.content);
         dest.writeString(this.author);
+        dest.writeString(this.mediaUrl);
         dest.writeString(this.posterUrl);
     }
 
     protected BlogPosts(Parcel in) {
         this.id = in.readInt();
         this.authorId = in.readInt();
+        this.excerpt = in.readString();
         this.date = in.readString();
         this.link = in.readString();
         this.title = in.readString();
         this.content = in.readString();
         this.author = in.readString();
+        this.mediaUrl = in.readString();
         this.posterUrl = in.readString();
     }
 

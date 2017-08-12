@@ -20,13 +20,12 @@ public class SettingsActivity extends DJTechPreferenceActivity implements Shared
     SettingsActivityFragment settingsFragment;
     public final String PREFS_THEME = "theme_prefs";
     private int themeSelect;
-    private int mThemeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_settings);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //settingsFragment = new SettingsActivityFragment();
 
 //        getFragmentManager().beginTransaction().add(R.id.root_settings, settingsFragment,  null).
@@ -65,7 +64,7 @@ public class SettingsActivity extends DJTechPreferenceActivity implements Shared
     }
 
 
-    public static void toggleTheme(int themeSelect) {
+    private void toggleTheme(int themeSelect) {
         switch (themeSelect) {
             case 0:
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);

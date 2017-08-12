@@ -131,6 +131,8 @@ public abstract class DJTechPreferenceActivity extends PreferenceActivity {
         getDelegate().onDestroy();
     }
 
+
+
     public void invalidateOptionsMenu() {
         getDelegate().invalidateOptionsMenu();
     }

@@ -60,5 +60,7 @@
     <string name="all_rights">All rights reserved.</string>
     <string name="u00a9_2017_www_djtech_com_ng">© 2017 www.djtech.com.ng</string>
     <string name="theme_change_toast_texrt">Changes will take effect when you navigate back</string>
+    <string name="error_occurred">An error occurred!</string>
+    <string name="isaiah">Isaiah Bakare</string>
 
 </resources>

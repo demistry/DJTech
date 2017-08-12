@@ -3,12 +3,9 @@ package com.kryptkode.cyberman.djtech;
 
 import android.content.Context;
 import android.content.DialogInterface;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -20,30 +17,20 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kryptkode.cyberman.djtech.models.BlogPosts;
 import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
-import com.kryptkode.cyberman.djtech.utils.ItemDivider;
-
-import java.util.ArrayList;
-
-import javax.net.ssl.HandshakeCompletedListener;
-
-
-import static com.kryptkode.cyberman.djtech.SettingsActivity.toggleTheme;
-import static com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment.POSTS;
 
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
+
+import static com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment.POSTS;
 
 
 public class DJTechHomeActivity extends AppCompatActivity
@@ -80,7 +67,16 @@ public class DJTechHomeActivity extends AppCompatActivity
 
     }
 
-
+    private void toggleTheme(int themeSelect) {
+        switch (themeSelect) {
+            case 0:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+            case 1:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+        }
+    }
 
     private void displayFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -102,9 +98,8 @@ public class DJTechHomeActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        PreferenceManager.getDefaultSharedPreferences(this).
-                registerOnSharedPreferenceChangeListener(preferenceListener);
-
+        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(this);
+        preference.registerOnSharedPreferenceChangeListener(preferenceListener);
 
     }
 

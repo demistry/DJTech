@@ -21,10 +21,16 @@ public class JsonHelper {
     public static final String LINK = "link";
     public static final String TITLE = "title";
     public static final String CONTENT = "content";
+    public static final String EXCERPT = "excerpt";
+    public static final String GUID = "guid";
     public static final String AUTHOR = "author";
     private static final String RENDERED = "rendered";
+    public static final String _LINKS  = "_links";
+    public static final String SELF = "self";
+    public static final String MEDIA = "wp:featuredmedia";
+    public static final String HREF = "href";
 
-    public static BlogPosts[] parseJson(String jsonData) {
+    public static BlogPosts[] parsePostsJson(String jsonData) {
         if (jsonData != null) {
 
             try {
@@ -55,6 +61,20 @@ public class JsonHelper {
                             .getString(RENDERED);
                     blogPost.setContent(content);
 
+                    String excerpt = blogPostJsonObject.getJSONObject(EXCERPT).
+                            getString(RENDERED);
+                    blogPost.setExcerpt(excerpt);
+
+                    JSONArray mediaUrlArray = blogPostJsonObject.getJSONObject(_LINKS).
+                            getJSONArray(MEDIA);
+                    JSONObject mediaUrlJsonObject = mediaUrlArray.getJSONObject(0);
+                    String mediaUrl = mediaUrlJsonObject.getString(HREF);
+                    blogPost.setMediaUrl(mediaUrl);
+
+                    String posterUrl = getPosterUrlFromJson(NetworkUtils.getDataFromWeb(blogPost.getMediaUrl()));
+                    blogPost.setPosterUrl(posterUrl);
+
+
                     int authorId = blogPostJsonObject.getInt(AUTHOR);
                     blogPost.setAuthorId(authorId);
 
@@ -67,6 +87,19 @@ public class JsonHelper {
                 return null;
             }
         } else {
+            return null;
+        }
+
+    }
+
+
+    public static String getPosterUrlFromJson(String json ){
+        try {
+            JSONObject mediaJsonObject = new JSONObject(json);
+            JSONObject posterJsonObject = mediaJsonObject.getJSONObject(GUID);
+            return posterJsonObject.getString(RENDERED);
+        } catch (JSONException e) {
+            e.printStackTrace();
             return null;
         }
 

@@ -41,7 +41,8 @@
         <activity android:name=".SolidColorActivity" />
         <activity android:name=".FAQsActivity" />
         <activity android:name=".InformationListActivity" />
-        <activity android:name=".AppInfoActivity"></activity>
+        <activity android:name=".AppInfoActivity" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>

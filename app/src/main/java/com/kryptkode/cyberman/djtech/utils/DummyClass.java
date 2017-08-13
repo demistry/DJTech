@@ -15,5 +15,7 @@ public class DummyClass {
     public String profile;
     public String number;
     public String email;
+    public String question;
+    public String answer;
 
 }

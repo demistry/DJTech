@@ -68,8 +68,22 @@
     <string name="dark">dark</string>
     <string name="isaiah">Isaiah Bakare</string>
     <string name="theme_change_toast_text">Theme Changed</string>
+    <string name="where_we_come_in">
+\t<b>WHERE WE COME IN</b>\n
 
+The world as we know it is a global village connected by the internet. The relevance of web/mobile development cannot be over emphasized when it comes to turning your big idea into reality. We believe every developed/developing Body or Institution should be well represented in the internet world to enhance innovation, productivity and efficiency; this is why you should choose us.
+</string>
+    <string name="conclusion">\tWe do hope to give our maximum best to ensure customer satisfaction and meet up all expectations. Choosing us would help us achieve our mission statement and do always remember that "We are at your service".</string>
 
+    <string name="vision">
+    \tBeing identified among the World’s leading Technological Companies in the foreseeable future.</string>
+
+    <string name="about_djtech">\t\tDJTech Company is a fast growing company that is into the creation and design of Websites, web applications, android applications(phone and tablet), iOS applications(iPhone and iPad), windows applications, graphics content(logos, business cards etc). We offer all these services at a cheap and customer friendly rate.\n
+
+\t\tThe company is gradually becoming one of the most sought after tech companies in the country and was established after years of training and experience gaining by the founders.</string>
+
+    <string name="mission_statement">\tTo ensure that technological advancements in software/programming is brought to everyone and creating a reliable connection among all parts of society spanning Business, Religion, Commerce, Education, Lifestyle etc.\n
+\tWe also maintain a free, friendly, and creative work environment, which respects diversity, new ideas, hard work and team work.</string>
     <string-array name="appearance_options">
         <item>Choose theme</item>
         <item>Change Home Background</item>
@@ -84,4 +98,12 @@
         <item>Credits</item>
         <item>Visit Website</item>
     </string-array>
+
+
+    <string name="mobile_banner">\t<b>MULTI-PLATFORM MOBILE APPS</b>\n
+     Native Mobile Applications in any platform with beautiful designs and User friendly interfaces.</string>
+    <string name="web_banner">\t<b>GET YOUR WEBSITE NOW!</b>\n
+    Get your own website now at a very affordable price.</string>
+    <string name="graphics_banner">\t<b>AWESOME GRAPHICS</b>\n
+    With mind blowing graphic designs, we bring your ideas to the limelight. We pop dreams into existence.</string>
 </resources>

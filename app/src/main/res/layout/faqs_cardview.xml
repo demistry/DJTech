@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="2dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/question_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:paddingLeft="2dp"
+                android:textSize="16dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+            <TextView
+                android:id="@+id/question"
+                android:layout_marginLeft="5dp"
+                android:layout_alignTop="@id/question_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_toRightOf="@id/question_number"/>
+            <View
+                android:id="@+id/bullet"
+                android:background="@drawable/bullet_icon"
+                android:layout_below="@+id/question"
+                android:paddingLeft="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                />
+            <com.ms.square.android.expandabletextview.ExpandableTextView
+                xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/bullet"
+                android:layout_below="@id/question"
+                expandableTextView:maxCollapsedLines="0"
+                expandableTextView:animDuration="350"
+                expandableTextView:expandDrawable="@drawable/drop_down_icon"
+                expandableTextView:collapseDrawable="@drawable/up_icon"
+                >
+                <TextView
+                    android:id="@id/expandable_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textStyle="italic|bold"
+                    />
+                <ImageButton
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:background="@android:color/transparent"/>
+
+            </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

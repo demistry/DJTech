@@ -9,19 +9,22 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/post_swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/post_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            />
 
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <ImageView
             android:id="@+id/error_image_view"

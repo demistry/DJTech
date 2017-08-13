@@ -8,8 +8,7 @@
         android:title="@string/team"
         android:icon="@drawable/ic_people_black_24dp"
 
-        android:title="Team"
-        android:icon="@drawable/team_24"
+
 
         app:showAsAction="ifRoom" />
     <item
@@ -18,9 +17,6 @@
 
         android:title="@string/settings"
         android:icon="@drawable/ic_settings_black_24dp"
-
-        android:title="Settings"
-        android:icon="@drawable/settings_24"
 
         app:showAsAction="ifRoom">
     </item>

@@ -162,9 +162,8 @@ public class DJTechHomeActivity extends AppCompatActivity
         }
         if (id == R.id.settings){
 
-            Intent intent = new Intent(DJTechHomeActivity.this, SettingsActivity.class);
+            Intent intent = new Intent(DJTechHomeActivity.this, OptionsActivity.class);
 
-            Intent intent = new Intent(DJTechHomeActivity.this, Settings.class);
 
             startActivity(intent);
             return true;

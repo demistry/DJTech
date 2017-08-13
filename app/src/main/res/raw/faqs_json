@@ -1,0 +1,58 @@
+[
+  {
+    "Question":"What services do you offer exactly?",
+    "Answer":"We offer website design & web applications development, mobile application development(android, iOS & windows) and also graphics design."
+  },
+  {
+    "Question":"How long does it take to deliver a website/mobile application?",
+    "Answer":"The duration of developing a website/mobile application depends on how complex the job is and the features demanded by the client."
+  },
+  {
+    "Question":"Do you provide maintenance for a website/mobile application after development?",
+    "Answer":"Yes. We provide maintenance service and upgrades for our completed websites/applications for an additional fee"
+  },
+  {
+    "Question":"What is your policy on review of completed jobs?",
+    "Answer":"We review completed jobs and make all the stipulated changes requested by the client free of charge for the first one week after completion of the job. Thereafter, any requested changes would attract an additional fee."
+  },
+  {
+    "Question":"Do you offer printing of your graphic jobs?",
+    "Answer":"No. Graphic jobs are only available in software format."
+  },
+  {
+    "Question":"What does your business affiliate program entail?",
+    "Answer":"We offer a 10% commission from the profit on any deal closed by an external business specialist."
+  },
+  {
+    "Question":"Is DJTech strictly a profit making firm?",
+    "Answer":"No, we are not. We also contribute our quota to society by providing solutions for world problems using technology."
+  },
+  {
+    "Question":"Is there any ongoing application into a position in DJTech?",
+    "Answer":"Right now there is no ongoing application. The right channels would be made known to you when application commences."
+  },
+  {
+    "Question":"What are your quotations like?",
+    "Answer":"Our quotations depends on the complexity of a job and features demanded by the user. It also depends on the amount of time to be used in completing the job."
+  },
+  {
+    "Question":"What is your policy on refunds?",
+    "Answer":"We offer refunding for our services in an event where we are unable to fulfil the contract agreed on with the client."
+  },
+  {
+    "Question":"Is there a program in the company that helps people learn?",
+    "Answer":"DJTech periodically organizes training programs and bootcamps in web development, mobile app development and graphics designs. Information about these training programs and their starting dates would be communicated via our newsletter and social media outlets."
+  },
+  {
+    "Question":"Does the company have plans of going into hardware production and services?",
+    "Answer":"Yes, there is a plan of expansion in the immediate future but for now we are only into software production and services."
+  },
+  {
+    "Question":"Will there be any promotional offers from the company?",
+    "Answer":"Yes, we offer promotions and offers from time to time which will be made known available to you using the right channels."
+  },
+  {
+    "Question":"How can a client make payments for services from Djtech?",
+    "Answer":"Payments for services are made into the Company's account which would be made available to the client on signing of the job to us."
+  }
+]

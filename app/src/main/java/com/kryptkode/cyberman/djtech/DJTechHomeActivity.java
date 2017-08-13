@@ -182,15 +182,14 @@ public class DJTechHomeActivity extends AppCompatActivity
             displayFragment(homeScreenFragment);
 
         } else if (id == R.id.nav_about) {
+            Intent intent = new Intent(DJTechHomeActivity.this, AboutActivity.class);
+            startActivity(intent);
 
-            displaySnackBarMessage("NAV");
         } else if (id == R.id.nav_contact_us) {
             Intent intent = new Intent(DJTechHomeActivity.this, ContactUsActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {
-            displaySnackBarMessage("SHARE");
-
 
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");

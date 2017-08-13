@@ -34,7 +34,6 @@ public class InformationListActivity extends AppCompatActivity {
                         intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.djtech.com.ng"));
                         startActivity(intent);
                         break;
-
                 }
             }
         });

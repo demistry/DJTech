@@ -1,4 +1,4 @@
-package com.kryptkode.cyberman.djtech;
+package com.kryptkode.cyberman.djtech.utils;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -15,5 +15,7 @@ public class DummyClass {
     public String profile;
     public String number;
     public String email;
+    public String question;
+    public String answer;
 
 }

@@ -1,25 +1,19 @@
 package com.kryptkode.cyberman.djtech;
 
-import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.kryptkode.cyberman.djtech.adapters.TeamRecyclerAdapter;
 import com.kryptkode.cyberman.djtech.ui.fragments.ProfilePictureFragment;
-import com.kryptkode.cyberman.djtech.utils.ItemDivider;
+import com.kryptkode.cyberman.djtech.utils.DummyClass;
 
 import org.json.JSONArray;
 import org.json.JSONException;

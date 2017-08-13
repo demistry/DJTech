@@ -92,13 +92,6 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
         postAvatarTextView.setText(firstLetter);*/
 
 
-        postTitleTextView.setText(post.getPostTitle());
-        postAuthorTextView.setText(post.getPostAuthor());
-        postTimeTextView.setText(post.getPostTime());
-        postContentTextView.setText(post.getPostContent());
-        postAvatarTextView.setText(firstLetter);
-
-
 
 
 

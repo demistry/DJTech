@@ -1,4 +1,4 @@
-package com.kryptkode.cyberman.djtech;
+package com.kryptkode.cyberman.djtech.utils;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;

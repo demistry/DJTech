@@ -14,6 +14,22 @@
     <string name="career">Career</string>
     <string name="contact_us">Contact Us</string>
 
+
+    <string name="prefs_background">prefs_background</string>
+    <string name="prefs_assistance">Assistance</string>
+    <string name="prefs_bg_title">Change Home Background</string>
+    <string name="prefs_FAQs">FAQs</string>
+    <string name="prefs_information">Information</string>
+    <string name="prefs_app_info">App Info</string>
+    <string name="prefs_information_key">prefs_info</string>
+    <string name="prefs_app_info_key">prefs_app_info</string>
+    <string name="prefs_policy_key">prefs_privacy</string>
+    <string name="prefs_policy">Privacy Policy</string>
+    <string name="prefs_visit_site">Visit Website</string>
+    <string name="prefs_visit_site_key">prefs_visit</string>
+    <string name="prefs_credits">Credits</string>
+    <string name="prefs_credits_key">prefs_credits</string>
+
     <string name="news_post_poster">News Post Poster</string>
     <string name="share_button">share button</string>
     <string name="by_author">-by %s</string>
@@ -46,14 +62,7 @@
     <string name="djtech_app">DJTech App</string>
     <string name="theme_prefs_key">Select the theme of the app</string>
     <string name="prefs_appearance">Appearance</string>
-    <string name="prefs_bg_title">Change Home Background</string>
-    <string name="prefs_assistance">Assistance</string>
-    <string name="prefs_FAQs">FAQs</string>
-    <string name="prefs_information">Information</string>
-    <string name="prefs_app_info">App Info</string>
-    <string name="prefs_policy">Privacy Policy</string>
-    <string name="prefs_credits">Credits</string>
-    <string name="prefs_visit_site">Visit Website</string>
+
     <string name="team">Team</string>
     <string name="light">light</string>
     <string name="dark">dark</string>

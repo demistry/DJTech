@@ -1,93 +1,70 @@
 package com.kryptkode.cyberman.djtech;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Path;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.kryptkode.cyberman.djtech.adapters.SettingsRecyclerAdapter;
-import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.Buffer;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-
-public class Settings extends AppCompatActivity {
-    String [] settingsTitle = {"Modify Theme","Set Home Wallpaper", "FAQs"};
-    int [] settingsImages = {R.drawable.change_theme_icon, R.drawable.change_wallpaper, R.drawable.faq_icon};
-    int [] colourTints = {R.color.greenTint, R.color.yellowTint, R.color.redTint};
-
-
+public class OptionsActivity extends AppCompatActivity {
+    private ListView appearanceListview, assistanceListview;
+    private ArrayAdapter appearanceArray, assistanceArray;
+    SharedPreferences sharedPref;
     public static final String MYPRE = "MyPre";
     public static final String IMAGE_PATH = "Path";
     public static final String WALLPAPER_FLAGS = "WallpaperValue";
-    SettingsRecyclerAdapter adapter;
     private static final int REQUEST_CODE= 1000;
-    RecyclerView recyclerView;
+    Context context = this;
+    Intent intent;
     Bitmap bitmap;
     SharedPreferences sharedPreferences;
-    SharedPreferences sharedPref;
-    public static int WALLPAPER_FLAG ;
-    Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings_layout);
-        //RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.settings_layout_file);
-        Resources resources = this.getResources();
-        recyclerView = (RecyclerView) findViewById(R.id.settings_recycler_view);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        adapter = new SettingsRecyclerAdapter(settingsTitle, settingsImages, colourTints, resources, new SettingsRecyclerAdapter.SettingsClicked() {
-            Intent intent;
+        setContentView(R.layout.options_layout);
+        appearanceListview = (ListView) findViewById(R.id.appearance_listview);
+        assistanceListview = (ListView) findViewById(R.id.assistance_listview);
+        appearanceArray = new ArrayAdapter(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.appearance_options));
+        assistanceArray = new ArrayAdapter(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.assistance_options));
+        appearanceListview.setAdapter(appearanceArray);
+        assistanceListview.setAdapter(assistanceArray);
+
+        appearanceListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onSettingsClicked(View v, int position) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 switch(position){
-                    case 0: break;
+                    case 0:
+                        //change theme with this click
+                        break;
                     case 1:
                         final AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-                        dialog.setTitle("Choose Wallpaper from");
-                        View view = LayoutInflater.from(context).inflate(R.layout.wallpaper_dialog_layout, null);
-                        dialog.setView(view);
+                        dialog.setTitle("Choose Background from");
+                        View views = LayoutInflater.from(context).inflate(R.layout.wallpaper_dialog_layout, null);
+                        dialog.setView(views);
                         dialog.show();
-                        LinearLayout linearLayout1 = (LinearLayout) view.findViewById(R.id.gallery);
-                        LinearLayout linearLayout2 = (LinearLayout) view.findViewById(R.id.solid_color);
-                        LinearLayout linearLayout3 = (LinearLayout) view.findViewById(R.id.remove);
+                        LinearLayout linearLayout1 = (LinearLayout) views.findViewById(R.id.gallery);
+                        LinearLayout linearLayout2 = (LinearLayout) views.findViewById(R.id.solid_color);
+                        LinearLayout linearLayout3 = (LinearLayout) views.findViewById(R.id.remove);
                         linearLayout1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -102,7 +79,7 @@ public class Settings extends AppCompatActivity {
                         linearLayout2.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                intent = new Intent(Settings.this, SolidColorActivity.class);
+                                intent = new Intent(OptionsActivity.this, SolidColorActivity.class);
                                 startActivity(intent);
                             }
                         });
@@ -118,22 +95,27 @@ public class Settings extends AppCompatActivity {
                         });
                         //WALLPAPER_FLAG = 0;
                         break;
-                    case 2:
-                        intent = new Intent(Settings.this, FAQsActivity.class);
-                        startActivity(intent); break;
                 }
             }
         });
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        /*SharedPreferences shrep = this.getSharedPreferences(MYPRE, MODE_PRIVATE);
-        Bitmap image = StringToBitMap(shrep.getString(IMAGE_PATH,""));
-        Log.d("TAG", "retrieved string" + shrep.getString(IMAGE_PATH, ""));
-        relativeLayout.setBackground(new BitmapDrawable(resources, image));*/
+
+        assistanceListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        intent = new Intent(OptionsActivity.this, FAQsActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        intent = new Intent(OptionsActivity.this, InformationListActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+            }
+        });
 
     }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -142,15 +124,17 @@ public class Settings extends AppCompatActivity {
             Uri selectedImagePath = data.getData();
             Log.d("TAG", selectedImagePath.getPath());
             try {
-                RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.settings_layout_file);
+                View view = LayoutInflater.from(this).inflate(R.layout.settings_layout,null);
+                LinearLayout relativeLayout = (LinearLayout) findViewById(R.id.options_layout);
                 InputStream fileInputStream = getContentResolver().openInputStream(data.getData());
                 bitmap = BitmapFactory.decodeStream(fileInputStream);
                 Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, relativeLayout.getWidth(), relativeLayout.getHeight(),true);
 
-                relativeLayout.setBackground(new BitmapDrawable(getResources(), bitmap1));
+                //relativeLayout.setBackground(new BitmapDrawable(getResources(), bitmap1));
                 sharedPreferences = getSharedPreferences(MYPRE, MODE_PRIVATE);
                 sharedPreferences.edit().putString(IMAGE_PATH,BitMapToString(bitmap1)).commit();
                 fileInputStream.close();
+                Toast.makeText(this, "Image set as Background", Toast.LENGTH_SHORT).show();
 
             }
             catch(IOException e){
@@ -162,7 +146,7 @@ public class Settings extends AppCompatActivity {
         ByteArrayOutputStream baos=new  ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
         byte [] b=baos.toByteArray();
-        String temp=Base64.encodeToString(b, Base64.DEFAULT);
+        String temp= Base64.encodeToString(b, Base64.DEFAULT);
         Log.d("TAG", "encoded string" + temp);
         return temp;
 

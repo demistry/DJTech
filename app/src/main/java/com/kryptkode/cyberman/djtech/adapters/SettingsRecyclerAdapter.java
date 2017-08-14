@@ -20,12 +20,23 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<SettingsRecycl
     int [] settingsImages;
     int [] colourTints;
     Resources resources;
-    public SettingsRecyclerAdapter(String [] settingsTitle, int [] settingsImages, int [] colourTints, Resources resources){
+    private SettingsClicked settingsClicked;
+
+    public interface SettingsClicked{
+        void onSettingsClicked(View v, int position);
+    }
+
+
+    public SettingsRecyclerAdapter(String [] settingsTitle, int [] settingsImages, int [] colourTints, Resources resources, SettingsClicked settingsClicked){
         this.settingsTitle = settingsTitle;
         this.settingsImages = settingsImages;
         this.colourTints = colourTints;
         this.resources = resources;
+        this.settingsClicked = settingsClicked;
     }
+
+
+
 
     public static  class SettingsViewHolder extends RecyclerView.ViewHolder{
         private ImageView settingImage;
@@ -37,6 +48,16 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<SettingsRecycl
             cardview = (RelativeLayout) v.findViewById(R.id.settings_cardview);
             settingImage = (ImageView) v.findViewById(R.id.settings_icon);
             settingTitle = (TextView) v.findViewById(R.id.settings_title);
+        }
+        public void clickedCard(final SettingsClicked settingsClicked, final int position){
+            settingImage.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            settingsClicked.onSettingsClicked(v, position);
+                        }
+                    }
+            );
         }
     }
 
@@ -52,6 +73,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<SettingsRecycl
         holder.settingImage.setImageResource(settingsImages[position]);
         holder.settingTitle.setText(settingsTitle[position]);
         holder.cardview.setBackgroundColor(resources.getColor(colourTints[position]));
+        holder.clickedCard(settingsClicked, position);
     }
 
     @Override

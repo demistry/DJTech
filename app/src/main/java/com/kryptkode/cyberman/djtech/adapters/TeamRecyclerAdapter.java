@@ -1,17 +1,13 @@
 package com.kryptkode.cyberman.djtech.adapters;
 
-import android.content.pm.PackageManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kryptkode.cyberman.djtech.DummyClass;
+import com.kryptkode.cyberman.djtech.utils.DummyClass;
 import com.kryptkode.cyberman.djtech.R;
-
-import org.json.JSONArray;
 
 import java.util.List;
 

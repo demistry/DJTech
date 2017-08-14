@@ -4,7 +4,11 @@ package com.kryptkode.cyberman.djtech.ui.fragments;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -21,6 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kryptkode.cyberman.djtech.OptionsActivity;
 import com.kryptkode.cyberman.djtech.R;
 import com.kryptkode.cyberman.djtech.adapters.HomeScreenAdapter;
 import com.kryptkode.cyberman.djtech.models.BlogPosts;
@@ -30,6 +35,10 @@ import com.kryptkode.cyberman.djtech.utils.JsonHelper;
 import com.kryptkode.cyberman.djtech.utils.NetworkUtils;
 
 import java.util.ArrayList;
+
+import static com.kryptkode.cyberman.djtech.OptionsActivity.IMAGE_PATH;
+import static com.kryptkode.cyberman.djtech.OptionsActivity.StringToBitMap;
+import static com.kryptkode.cyberman.djtech.OptionsActivity.WALLPAPER_FLAGS;
 
 
 /**
@@ -67,6 +76,7 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
 
 
     private ConnectivityChangeReceiver receiver;
+    private SharedPreferences shrep;
 
 
     public interface HomeScreenFragmentListener {
@@ -91,6 +101,28 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
         // Required empty public constructor
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        shrep = getContext().getSharedPreferences(OptionsActivity.MYPRE, Context.MODE_PRIVATE);
+        switch (shrep.getInt(WALLPAPER_FLAGS, 0)){
+            case 1: view.setBackgroundResource(R.drawable.dark_brown);break;
+            case 2: view.setBackgroundResource(R.drawable.dark_red);break;
+            case 3: view.setBackgroundResource(R.drawable.darkblue_background);break;
+            case 4: view.setBackgroundResource(R.drawable.light_green);break;
+            case 5: view.setBackgroundResource(R.drawable.dark_violet);break;
+            case 6: view.setBackgroundResource(R.drawable.bluee);break;
+            case 7: view.setBackgroundResource(R.drawable.yellow);break;
+            case 8: view.setBackgroundResource(R.drawable.solid);break;
+            case 9: view.setBackgroundResource(R.drawable.dark_green);break;
+            case 10: view.setBackground(null);break;
+            case 11: view.setBackgroundResource(R.drawable.orange);break;
+            case 15: Bitmap image = StringToBitMap(shrep.getString(IMAGE_PATH,""));
+                Log.d("TAG", "retrieved string" + shrep.getString(IMAGE_PATH, ""));
+                view.setBackground(new BitmapDrawable(getResources(), image));break;
+        }
+        if ((shrep.getString(IMAGE_PATH,"") == null)) view.setBackground(null);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -116,6 +148,29 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.addItemDecoration(new ItemDivider(getContext()));
         swipeRefreshLayout.setOnRefreshListener(refreshListener);
+
+
+        shrep = getContext().getSharedPreferences(OptionsActivity.MYPRE, Context.MODE_PRIVATE);
+        switch (shrep.getInt(WALLPAPER_FLAGS, 0)){
+            case 1: view.setBackgroundResource(R.drawable.dark_brown);break;
+            case 2: view.setBackgroundResource(R.drawable.dark_red);break;
+            case 3: view.setBackgroundResource(R.drawable.darkblue_background);break;
+            case 4: view.setBackgroundResource(R.drawable.light_green);break;
+            case 5: view.setBackgroundResource(R.drawable.dark_violet);break;
+            case 6: view.setBackgroundResource(R.drawable.bluee);break;
+            case 7: view.setBackgroundResource(R.drawable.yellow);break;
+            case 8: view.setBackgroundResource(R.drawable.solid);break;
+            case 9: view.setBackgroundResource(R.drawable.dark_green);break;
+            case 10: view.setBackground(null);break;
+            case 11: view.setBackgroundResource(R.drawable.orange);break;
+            case 15: Bitmap image = StringToBitMap(shrep.getString(IMAGE_PATH,""));
+                Log.d("TAG", "retrieved string" + shrep.getString(IMAGE_PATH, ""));
+                view.setBackground(new BitmapDrawable(getResources(), image));break;
+        }
+        if ((shrep.getString(IMAGE_PATH,"") == null)) view.setBackground(null);
+
+
+
 
         errorImageView = (ImageView) view.findViewById(R.id.error_image_view);
         errorTextView = (TextView) view.findViewById(R.id.error_text_view);
@@ -227,7 +282,7 @@ public class HomeScreenFragment extends Fragment implements HomeScreenAdapter.Ho
         if (data != null) {
             addNewItemsToList(data);
         } else {
-            Toast.makeText(getContext(), R.string.error_occurred, Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Error occured", Toast.LENGTH_LONG).show();
             return;
         }
         HomeScreenFragmentHelper.indicatorsAppear(new View[]{progressBar, loadingTextView}, false);

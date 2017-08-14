@@ -7,11 +7,9 @@
     android:fillViewport="true"
     android:scrollbarSize="0.5dp"
     android:fadeScrollbars="true"
-
+    android:background="@color/colorPrimary"
     android:scrollbarFadeDuration="500">
 
-    android:scrollbarFadeDuration="500"
-    android:background="@color/colorPrimary">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +21,7 @@
             android:layout_marginRight="0dp"
             android:layout_marginLeft="0dp"
 
-            android:background="#000"
+
 
             app:cardElevation="3dp"
             >
@@ -36,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:background="#000"
+
 
 
                     >
@@ -57,7 +55,7 @@
                         android:textStyle="bold"
                         android:layout_centerHorizontal="true"
 
-                        android:textColor="#fff"
+
 
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"/>
                     <TextView
@@ -69,7 +67,7 @@
                         android:layout_marginTop="6dp"
                         android:textAllCaps="true"
                         android:text="WEB DEVELOPER"
-                        android:textColor="#fff"
+
                         android:fontFamily="serif"
                         android:textStyle="bold"
                         />
@@ -79,7 +77,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/member_position"
                         android:layout_marginTop="12dp"
-                        android:textColor="#fff"
+
                         android:gravity="center"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
                     <LinearLayout
@@ -102,7 +100,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:clickable="true"
-                            android:textColorLink="#ffa"
+                            android:textColorLink="@color/colorAccent"
                             android:layout_marginLeft="24dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                             />
@@ -128,7 +126,7 @@
                             android:layout_weight="1"
                             android:clickable="true"
                             android:layout_marginLeft="24dp"
-                            android:textColorLink="#ffa"
+                            android:textColorLink="@color/colorAccent"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
 
                             />
@@ -137,7 +135,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
-                        android:background="#000"
+
 
                         android:layout_below="@id/linear_layout2"
                         android:gravity="bottom"

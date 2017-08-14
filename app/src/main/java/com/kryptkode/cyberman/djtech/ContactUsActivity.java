@@ -36,8 +36,6 @@ public class ContactUsActivity extends AppCompatActivity {
 
                 progressDialog.setCancelable(true);
 
-                progressDialog.setCancelable(false);
-
                 progressDialog.show();
             }
 

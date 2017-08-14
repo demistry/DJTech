@@ -40,6 +40,8 @@ import com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment;
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
 
+import static com.kryptkode.cyberman.djtech.OptionsActivity.MYPRE;
+import static com.kryptkode.cyberman.djtech.OptionsActivity.THEME;
 import static com.kryptkode.cyberman.djtech.ui.fragments.HomeScreenFragment.POSTS;
 
 
@@ -54,7 +56,7 @@ public class DJTechHomeActivity extends AppCompatActivity
     HomeScreenFragment homeScreenFragment;
     Context context = this;
 
-    public final String PREFS_THEME = "theme_prefs";
+    public static final String PREFS_THEME = "theme_prefs";
 
 
     @Override
@@ -63,12 +65,6 @@ public class DJTechHomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_djtech_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        PreferenceManager.setDefaultValues(this, R.xml.settings_preference, false);
-
-        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(this);
-        int themeSelect = Integer.parseInt(preference.getString(PREFS_THEME, "0"));
-        toggleTheme(themeSelect);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -114,9 +110,9 @@ public class DJTechHomeActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(this);
-        preference.registerOnSharedPreferenceChangeListener(preferenceListener);
-        int themeSelect = Integer.parseInt(preference.getString(PREFS_THEME, "0"));
+        SharedPreferences preference = getSharedPreferences(MYPRE, MODE_PRIVATE);
+        int themeSelect = preference.getInt(THEME, 0);
+        toggleTheme(themeSelect);
         toggleTheme(themeSelect);
 
     }

@@ -56,8 +56,6 @@ public class HomeScreenFragmentHelper {
                String rawData = NetworkUtils.getDataFromWeb(url);
                Log.i(TAG, "loadInBackground: " + rawData);
                data = JsonHelper.parsePostsJson(rawData);
-               assert data != null;
-               Log.i(TAG, "loadInBackground: " + data.length);
                return data;
            }catch (Exception e){
                 e.printStackTrace();

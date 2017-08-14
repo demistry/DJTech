@@ -7,9 +7,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,22 +24,29 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.kryptkode.cyberman.djtech.views.ChangeThemeDialog;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class OptionsActivity extends AppCompatActivity {
+public class OptionsActivity extends AppCompatActivity implements ChangeThemeDialog.ChangeThemeDialogListener{
+    private static final String TAG = "OptionsActivity" ;
     private ListView appearanceListview, assistanceListview;
     private ArrayAdapter appearanceArray, assistanceArray;
     SharedPreferences sharedPref;
     public static final String MYPRE = "MyPre";
     public static final String IMAGE_PATH = "Path";
     public static final String WALLPAPER_FLAGS = "WallpaperValue";
+    public static final String THEME = "theme";
     private static final int REQUEST_CODE= 1000;
     Context context = this;
     Intent intent;
     Bitmap bitmap;
     SharedPreferences sharedPreferences;
+
+    private ChangeThemeDialog changeThemeDialog;
+    private int whichTheme;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +64,9 @@ public class OptionsActivity extends AppCompatActivity {
 
                 switch(position){
                     case 0:
-                        //change theme with this click
+                        changeThemeDialog = new ChangeThemeDialog();
+
+                        changeThemeDialog.show(getSupportFragmentManager(), "Theme");
                         break;
                     case 1:
                         final AlertDialog.Builder dialog = new AlertDialog.Builder(context);
@@ -160,6 +172,40 @@ public class OptionsActivity extends AppCompatActivity {
         }catch(Exception e){
             e.getMessage();
             return null;
+        }
+    }
+
+    @Override
+    public void onDialogPositiveButtonClicked(DialogFragment dialog) {
+        toggleTheme(whichTheme);
+        changeThemeDialog.dismiss();
+        SharedPreferences sharedPreferences = getSharedPreferences(MYPRE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(THEME, whichTheme);
+        editor.apply();
+
+        Toast.makeText(this, R.string.theme_change_toast_texrt, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRadioButtonClicked(int which) {
+        whichTheme = which;
+        Log.i(TAG, "onRadioButtonClicked: " + whichTheme);
+    }
+
+    @Override
+    public void onDialogNegativeButtonClicked(DialogFragment dialog) {
+        changeThemeDialog.dismiss();
+    }
+
+    private void toggleTheme(int themeSelect) {
+        switch (themeSelect) {
+            case 0:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+            case 1:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
         }
     }
 }

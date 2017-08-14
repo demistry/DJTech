@@ -62,10 +62,11 @@
     <string name="djtech_app">DJTech App</string>
     <string name="theme_prefs_key">Select the theme of the app</string>
     <string name="prefs_appearance">Appearance</string>
+    <string name="theme_change_toast_texrt">Changes will take effect on next restart</string>
 
     <string name="team">Team</string>
-    <string name="light">light</string>
-    <string name="dark">dark</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
     <string name="isaiah">Isaiah Bakare</string>
     <string name="theme_change_toast_text">Theme Changed</string>
     <string name="where_we_come_in">
@@ -106,4 +107,8 @@ The world as we know it is a global village connected by the internet. The relev
     Get your own website now at a very affordable price.</string>
     <string name="graphics_banner">\t<b>AWESOME GRAPHICS</b>\n
     With mind blowing graphic designs, we bring your ideas to the limelight. We pop dreams into existence.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="select_theme">Select theme</string>
+    <string name="djtech">DJTech</string>
 </resources>

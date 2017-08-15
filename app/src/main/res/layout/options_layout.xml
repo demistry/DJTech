@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/options_layout"
-    tools:context="com.kryptkode.cyberman.djtech.OptionsActivity">
+    tools:context="com.djtech.android.djtech.com.djtech.android.OptionsActivity">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -16,7 +16,7 @@
         android:layout_margin="@dimen/news_poster_margin"
         android:layout_weight="1"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
 
         app:srcCompat="@drawable/no_image" />
 
@@ -49,14 +49,14 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="?android:textAppearanceMedium"
-            android:textSize="20sp"
+            android:textSize="21sp"
             android:textStyle="bold"
             tools:text="The Importance of Mobile Apps" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent">
+            >
 
             <TextView
                 android:id="@+id/post_time_text_view"

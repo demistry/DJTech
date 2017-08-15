@@ -8,7 +8,7 @@
     android:background="@drawable/djtech_logo"
     android:backgroundTint="#7f591675"
     android:backgroundTintMode="src_over"
-    tools:context="com.kryptkode.cyberman.djtech.Settings">
+    tools:context="com.djtech.android.djtech.Settings">
    <android.support.v7.widget.RecyclerView
        android:id="@+id/settings_recycler_view"
        android:layout_width="match_parent"

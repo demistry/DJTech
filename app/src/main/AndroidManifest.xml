@@ -1,48 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kryptkode.cyberman.djtech">
+    package="com.djtech.android">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_dj_tech_app_icon"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:logo="@null"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".DJTechHomeActivity"
+            android:name="com.djtech.android.DJTechHomeActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity
-            android:name=".TeamMembersActivity"
-            android:label="Team Members" />
-        <activity
-            android:name=".BlogPostDetailActivity"
-            android:label="@string/title_activity_blog_post_detail"
-            android:parentActivityName=".DJTechHomeActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kryptkode.cyberman.djtech.DJTechHomeActivity" />
+            android:name="com.djtech.android.TeamMembersActivity"
+            android:label="Team Members"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.djtech.android.DJTechHomeActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.djtech.android.DJTechHomeActivity" />
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:label="Options" />
-        <activity android:name=".ContactUsActivity" />
-        <activity android:name=".OptionsActivity" />
-        <activity android:name=".SolidColorActivity" />
-        <activity android:name=".FAQsActivity" />
-        <activity android:name=".InformationListActivity" />
-        <activity android:name=".AppInfoActivity" />
-        <activity android:name=".AboutActivity"></activity>
+            android:name="com.djtech.android.BlogPostDetailActivity"
+            android:label="@string/title_activity_blog_post_detail"
+            android:parentActivityName="com.djtech.android.DJTechHomeActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.djtech.android.DJTechHomeActivity" />
+        </activity>
+        <activity
+            android:name="com.djtech.android.ContactUsActivity"
+            android:label="Contact Us"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.djtech.android.DJTechHomeActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.djtech.android.DJTechHomeActivity" />
+        </activity>
+        <activity
+            android:name="com.djtech.android.OptionsActivity"
+            android:label="Options"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.djtech.android.DJTechHomeActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.djtech.android.DJTechHomeActivity" />
+        </activity>
+        <activity
+            android:name="com.djtech.android.SolidColorActivity"
+            android:label="Select Background Color"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.djtech.android.FAQsActivity"
+            android:label="Frequently Asked Questions"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.djtech.android.OptionsActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.djtech.android.OptionsActivity" />
+        </activity>
+        <activity
+            android:name="com.djtech.android.InformationListActivity"
+            android:label="Information"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.djtech.android.OptionsActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.djtech.android.OptionsActivity" />
+        </activity>
+        <activity
+            android:name="com.djtech.android.AppInfoActivity"
+            android:label="App Info"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.djtech.android.AboutActivity"
+            android:label="About Us"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.djtech.android.DJTechHomeActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.djtech.android.DJTechHomeActivity" />
 
-        <activity android:name=".SplashScreen"
+        </activity>
+        <activity
+            android:name="com.djtech.android.SplashScreen"
             android:theme="@style/MyTheme.Splash">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

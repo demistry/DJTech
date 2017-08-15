@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DJ Tech</string>
+    <string name="app_name">DJTech</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -37,7 +37,7 @@
     <string name="text_loading_">Loading…</string>
     <string name="no_internet_error_image">No internet error image</string>
     <string name="refreshing">Refreshing…</string>
-    <string name="title_activity_blog_post_detail">BlogPostDetailActivity</string>
+    <string name="title_activity_blog_post_detail">Article</string>
 
 
     <string name="web_developer">WEB DEVELOPER</string>
@@ -62,7 +62,7 @@
     <string name="djtech_app">DJTech App</string>
     <string name="theme_prefs_key">Select the theme of the app</string>
     <string name="prefs_appearance">Appearance</string>
-    <string name="theme_change_toast_texrt">Changes will take effect on next restart</string>
+    <string name="theme_change_toast_texrt">Return home to effect changes</string>
 
     <string name="team">Team</string>
     <string name="light">Light</string>
@@ -96,9 +96,9 @@ The world as we know it is a global village connected by the internet. The relev
     <string-array name="info_options">
         <item>App Info</item>
         <item>Privacy Policy</item>
-        <item>Credits</item>
         <item>Visit Website</item>
     </string-array>
+
 
 
     <string name="mobile_banner">\t<b>MULTI-PLATFORM MOBILE APPS</b>\n
@@ -111,4 +111,5 @@ The world as we know it is a global village connected by the internet. The relev
     <string name="cancel">Cancel</string>
     <string name="select_theme">Select theme</string>
     <string name="djtech">DJTech</string>
+    <string name="team_nav">Team</string>
 </resources>

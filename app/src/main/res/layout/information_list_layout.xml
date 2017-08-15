@@ -5,7 +5,7 @@
     android:id="@+id/info_listview_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kryptkode.cyberman.djtech.InformationListActivity">
+    tools:context="com.djtech.android.djtech.com.djtech.android.InformationListActivity">
     <ListView
         android:id="@+id/information_listview"
         android:layout_width="match_parent"

@@ -5,69 +5,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context="com.kryptkode.cyberman.djtech.AboutActivity">
+    tools:context="com.djtech.android.djtech.com.djtech.android.AboutActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit ="marquee_forever"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:scrollHorizontally="true"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-            android:textStyle="bold"
-            android:textSize="32sp"
-            android:text="ABOUT DJTECH COMPANY"
-            android:textColor="@color/colorAccent"
-            />
+        android:orientation="vertical"
+        android:padding="2dp">
 
         <TextView
             android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/about_djtech"
-            android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
             <ViewFlipper
                 android:id="@+id/viewflipper"
                 android:layout_gravity="top"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/web_image"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:src="@drawable/websitebanner" />
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/web_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp"
+                        android:scaleType="fitXY"
+                        android:padding="0dp"
+                        android:src="@drawable/websitebanner" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="#00f"
+                        android:text="@string/web_banner"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/mobile_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp"
+                        android:scaleType="fitXY"
+                        android:padding="0dp"
+                        android:src="@drawable/mobileappbanner"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorAccents"
+                        android:text="@string/mobile_banner"/>
+                </FrameLayout>
 
-                <ImageView
-                    android:id="@+id/mobile_image"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:src="@drawable/mobileappbanner"/>
-                <ImageView
-                    android:id="@+id/graphics_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:src="@drawable/graphicsbanner"/>
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/graphics_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp"
+                        android:scaleType="fitXY"
+                        android:padding="0dp"
+                        android:src="@drawable/graphicsbanner"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:text="@string/graphics_banner"/>
+                </FrameLayout>
             </ViewFlipper>
-            <TextView
-                android:id="@+id/about_image_description_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="#fff"/>
-        </FrameLayout>
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -105,6 +120,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:gravity="top"
+                android:scaleType="fitXY"
+                android:padding="0dp"
                 android:layout_gravity="top"
                 android:src="@drawable/globe"/>
             <TextView

@@ -11,7 +11,6 @@
             android:title="Choose theme" />
 
         <Preference
-            android:key="@string/prefs_background"
             android:title="@string/prefs_bg_title">
             <intent android:action="com.kryptkode.cyberman.djtech.TeamMembersActivity" />
         </Preference>
@@ -26,21 +25,21 @@
 
 
         <PreferenceScreen
-            android:key="@string/prefs_information_key"
+
             android:title="@string/prefs_information"
             >
 
             <Preference
-                android:key="@string/prefs_app_info_key"
+
                 android:title="@string/prefs_app_info" />
             <Preference
-                android:key="@string/prefs_policy_key"
+
                 android:title="@string/prefs_policy" />
             <Preference
-                android:key="@string/prefs_credits_key"
+
                 android:title="@string/prefs_credits" />
             <Preference
-                android:key="@string/prefs_visit_site_key"
+
                 android:title="@string/prefs_visit_site" />
 
 

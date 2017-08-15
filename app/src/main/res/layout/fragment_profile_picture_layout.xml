@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
-    tools:context="com.kryptkode.cyberman.djtech.ui.fragments.ProfilePictureFragment">
+    tools:context="com.djtech.android.ui.fragments.ProfilePictureFragment">
 
     <ImageView
         android:id="@+id/fragment_profile_picture"
